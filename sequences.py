@@ -1,8 +1,6 @@
 from math import floor, ceil, log
 
 
-
-
 def generate_arithmetic_sequence(n, start, step):
     sequence = []
     for i in range(n):
@@ -31,8 +29,6 @@ def generate_fibonacci_sequence(n):
 
 
 def generate_primes_sequence(n):
-    # find n primes using sieve of eratosthenes
-
     primes = []
     sieve = [True] * floor((n * log(n * log(n))) + 10)  # for n > 6
 
