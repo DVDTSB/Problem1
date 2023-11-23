@@ -26,7 +26,7 @@ def main():
     print("a. Arithmetic sequence")
     print("b. Geometric sequence")
     print("c. Fibonacci sequence")
-    print("d. Recursive sequence")
+    print("d. Recursive sequence (likely to fail for negative weights)")
     print("e. Primes sequence")
     print("f. Binomial coefficients")
     print("g. Semiprimes sequence")
