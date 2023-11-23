@@ -15,6 +15,10 @@ def main():
 
     prmtr_type = input("Type of the parameter:")
 
+    if prmtr_type not in ["a", "b"]:
+        print("Wrong type of the parameter")
+        exit(1)
+
     P = lambda x, y: x + y if prmtr_type == "a" else x * y
 
     maxn = 2 * n if prmtr_type == "a" else n * n
@@ -25,6 +29,7 @@ def main():
     print("d. Recursive sequence")
     print("e. Primes sequence")
     print("f. Binomial coefficients")
+    print("g. Semiprimes sequence")
 
     seq_type = input("Type of the sequence:")
 
@@ -51,6 +56,8 @@ def main():
             sequence = generate_primes_sequence(maxn)
         case "f":
             sequence = generate_binomial_sequence(maxn)
+        case "g":
+            sequence = generate_semiprimes_sequence(maxn)
         case _:
             print("Wrong type of the sequence")
             exit(1)
@@ -66,6 +73,26 @@ def main():
 
     print("Number of connected components: ", nx.number_connected_components(G))
     print("Number of edges: ", G.number_of_edges())
+
+    import matplotlib.pyplot as plt
+
+    nx.draw(G, with_labels=True, node_size=10, font_size=2, width=0.5)
+    plt.show()
+    plt.savefig("graph.svg")
+
+    f = open("graph.txt", "w")
+
+    for i in G.nodes:
+        f.write(str(i) + " " + "\n")
+    for i in G.edges:
+        f.write(str(i[0]) + " " + str(i[1]) + "\n")
+
+    f.close()
+
+    calc_cycles = input("Calculate cycles (might take a long time)? (y/n):")
+
+    if calc_cycles == "n":
+        exit(0)
 
     import cycles
 
@@ -83,21 +110,6 @@ def main():
         for i in lengths:
             print(i, end=" ")
         print()
-
-    import matplotlib.pyplot as plt
-
-    nx.draw(G, with_labels=True, node_size=10, font_size=2, width=0.5)
-    plt.show()
-    plt.savefig("graph.svg")
-
-    f = open("graph.txt", "w")
-
-    for i in G.nodes:
-        f.write(str(i) + " " + "\n")
-    for i in G.edges:
-        f.write(str(i[0]) + " " + str(i[1]) + "\n")
-
-    f.close()
 
 
 if __name__ == "__main__":
